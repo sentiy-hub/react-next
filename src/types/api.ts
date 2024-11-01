@@ -21,3 +21,12 @@ export interface Item {
   export interface CreateItemMutation {
     createItem: Item;
   }
+
+  export interface TodoResponse {
+    data: {
+      createTodo: Item;
+      listTodos: {
+        items: any[]  // 你的Todo类型
+      }
+    }
+  }

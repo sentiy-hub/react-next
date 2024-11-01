@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { generateClient } from 'aws-amplify/api';
 import { listItems } from '../../graphql/queries';
 import { createItem } from '../../graphql/mutations';
-import { Item, CreateItemInput } from '../../types/api';
+import { Item, CreateItemInput, TodoResponse } from '../../types/api';
 
 const client = generateClient();
 
@@ -18,11 +18,11 @@ export const ItemList: React.FC = () => {
     try {
       const response = await client.graphql({
         query: listItems,
-        authMode: 'apiKey',
+        // authMode: 'apiKey',
         variables: {
           limit: 10
         }
-      });
+      }) as TodoResponse;;
       setItems(response.data.listTodos.items);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
@@ -35,9 +35,9 @@ export const ItemList: React.FC = () => {
     try {
       const response = await client.graphql({
         query: createItem,
-        authMode: 'apiKey', 
+        // authMode: 'apiKey', 
         variables: { input }
-      });
+      }) as TodoResponse;
       if (response.data) {
         setItems(prev => [...prev, response.data.createTodo]);
       }
