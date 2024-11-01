@@ -38,10 +38,9 @@ export const ItemList: React.FC = () => {
         authMode: 'apiKey', 
         variables: { input }
       });
-      
-    //   if (response.data) {
-    //     setItems(prev => [...prev, response.data.createItem]);
-    //   }
+      if (response.data) {
+        setItems(prev => [...prev, response.data.createTodo]);
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error creating item');
     }
@@ -73,14 +72,14 @@ export const ItemList: React.FC = () => {
         <div className="flex flex-col gap-4">
           <input
             name="name"
-            placeholder="Item name"
-            className="border p-2 rounded"
+            placeholder="name"
+            className="border p-2 rounded text-black"
             required
           />
           <input
             name="description"
-            placeholder="Description"
-            className="border p-2 rounded"
+            placeholder="description"
+            className="border p-2 rounded text-black"
             required
           />
           <button 
@@ -95,10 +94,10 @@ export const ItemList: React.FC = () => {
       <div className="grid gap-4">
         {items.map(item => (
           <div key={item.id} className="border p-4 rounded shadow">
-            <h3 className="text-xl font-semibold">{item.name}</h3>
-            <p className="text-gray-600">{item.description}</p>
+            <h3 className="text-xl font-semibold">name：{item.name}</h3>
+            <p className="text-gray-600">description：{item.description}</p>
             <small className="text-gray-500">
-                id: {item.id}
+                id：{item.id}
             </small>
           </div>
         ))}
