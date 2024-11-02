@@ -10,7 +10,7 @@ configureAmplify();
 const App: React.FC = () => {
   return (
     <div className="container mx-auto px-4">
-      <h1 className="text-3xl font-bold my-6">AppSync Demo</h1>
+      <h1 className="text-3xl font-bold my-6">记事本</h1>
       <ItemList />
     </div>
   );

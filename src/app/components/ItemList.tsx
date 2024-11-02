@@ -55,8 +55,6 @@ export const ItemList: React.FC = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">Items</h2>
-      
       <form 
         className="mb-6"
         onSubmit={(e) => {
@@ -72,13 +70,13 @@ export const ItemList: React.FC = () => {
         <div className="flex flex-col gap-4">
           <input
             name="name"
-            placeholder="name"
+            placeholder="记录人"
             className="border p-2 rounded text-black"
             required
           />
           <input
             name="description"
-            placeholder="description"
+            placeholder="记录事件"
             className="border p-2 rounded text-black"
             required
           />
@@ -86,16 +84,17 @@ export const ItemList: React.FC = () => {
             type="submit"
             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
           >
-            Add Item
+            添加
           </button>
         </div>
       </form>
+      <h2 className="text-2xl font-bold mb-4">列表</h2>
 
       <div className="grid gap-4">
         {items.map(item => (
           <div key={item.id} className="border p-4 rounded shadow">
-            <h3 className="text-xl font-semibold">name：{item.name}</h3>
-            <p className="text-gray-600">description：{item.description}</p>
+            <h3 className="text-xl font-semibold">记录人：{item.name}</h3>
+            <p className="text-50 font-semibold">记录事件：{item.description}</p>
             <small className="text-gray-500">
                 id：{item.id}
             </small>
